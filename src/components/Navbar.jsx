@@ -14,6 +14,9 @@ const Navbar = () => {
         <Link to="/" className="hover:text-blue-600 font-medium">
           Home
         </Link>
+        <Link to="/certificate-generator" className="hover:text-blue-600 font-medium">
+          Certificate Generator
+        </Link>
         <Link to="/about" className="hover:text-blue-600 font-medium">
           About
         </Link>
