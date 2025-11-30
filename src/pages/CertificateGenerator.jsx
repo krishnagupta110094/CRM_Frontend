@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import html2pdf from "html2pdf.js";
+import { IoCloudDownloadSharp } from "react-icons/io5";
 
 const CertificateGenerator = () => {
   const {
@@ -59,31 +60,36 @@ const CertificateGenerator = () => {
   // If certificate is generated, show it instead of form
   if (certificateHTML) {
     return (
-      <div className="relative h-auto w-[1020px] mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
-        {/* Download Button*/}
-        <div className="absolute top-4 right-4">
+      <div className="relative h-auto w-full md:max-w-4xl lg:max-w-5xl mx-auto mt-10 sm:p-6 bg-white rounded-2xl shadow-lg">
+        {/* Download Button */}
+        <div className="absolute top-6 md:-top-5 lg:top-4 right-4">
           <button
             onClick={downloadPDF}
-            className="bg-[#001f6e] cursor-pointer text-white py-2 px-4 rounded-lg hover:bg-[#001f3f] transition shadow-md"
+            className="block bg-[#001f6e] cursor-pointer text-white py-2 px-4 rounded-lg hover:bg-[#001f3f] transition shadow-md"
           >
             Download PDF
           </button>
+          {/* <button
+            onClick={downloadPDF}
+            className="block md:hidden bg-[#001f6e] cursor-pointer text-white py-2 px-4 rounded-lg hover:bg-[#001f3f] transition shadow-md"
+          >
+            <IoCloudDownloadSharp />PDF
+          </button> */}
         </div>
 
         {/* Header */}
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+        <h2 className="text-md md:text-2xl font-bold text-center mb-6 text-gray-800 mt-2">
           🎉 Certificate Generated Successfully!
         </h2>
 
         {/* Certificate Container */}
-        <div
-          id="certificate-container"
-          style={{
-            backgroundColor: "#f9fafb",
-            color: "#111827",
-          }}
-          dangerouslySetInnerHTML={{ __html: certificateHTML }}
-        />
+        <div className="flex justify-center items-center w-full overflow-auto md:overflow-hidden">
+          <div
+            id="certificate-container"
+            className="certificate-preview"
+            dangerouslySetInnerHTML={{ __html: certificateHTML }}
+          />
+        </div>
       </div>
     );
   }

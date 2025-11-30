@@ -1,1 +1,20 @@
 @import "tailwindcss";
+.certificate-preview {
+  transform-origin: top center;
+}
+
+/* Scale down for mobile */
+@media (max-width: 480px) {
+  .certificate-preview {
+    transform: scale(0.55);
+    width: 180%;
+  }
+}
+
+/* Scale down for tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .certificate-preview {
+    transform: scale(0.75);
+    width: 130%;
+  }
+}
